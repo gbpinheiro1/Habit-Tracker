@@ -1,27 +1,13 @@
-import { Button } from "./components/Button"
+import { Header } from "./components/Header"
+import { HabitForm } from "./components/HabitForm"
+import { HabitList } from "./components/HabitList"
 
 export default function App() {
   return (
     <div className="max-w-2xl mx-auto p-4 flex flex-col gap-4">
-      <Header></Header>
+      <Header />
+      <HabitForm />
+      <HabitList />
     </div>
-  )
-}
-
-function Header() {
-  return (
-    <header className="flex items-center justify-between">
-      <div className="flex flex-col gap-1">
-        <h1 className="text-3xl font-bold">Controle de Hábitos</h1>
-        <span className="text-zinc-400 text-sm">1/1 concluído(s) hoje.</span>
-      </div>
-      <div className="flex flex-col gap-1 items-end">
-        <span className="text-zinc-400 text-sm ">10/05 - 16/05</span>
-        <div className="flex items-center gap-3 justify-center">
-          <Button text="Ant."></Button>
-          <Button text="Próx."></Button>
-        </div>
-      </div>
-    </header>
   )
 }
