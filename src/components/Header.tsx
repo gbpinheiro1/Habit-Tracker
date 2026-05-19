@@ -10,8 +10,8 @@ export function Header() {
       <div className="flex flex-col gap-1 items-end">
         <span className="text-zinc-400 text-sm ">10/05 - 16/05</span>
         <div className="flex items-center gap-3 justify-center">
-          <Button>Ant.</Button>
-          <Button>Próx</Button>
+          <Button variant="primary">Ant.</Button>
+          <Button variant="primary">Próx</Button>
         </div>
       </div>
     </header>
