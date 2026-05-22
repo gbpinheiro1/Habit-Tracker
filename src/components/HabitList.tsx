@@ -1,17 +1,13 @@
 import { Button } from "./Button"
-import {
-  eachDayOfInterval,
-  endOfWeek,
-  format,
-  isFuture,
-  isSameDay,
-  startOfWeek,
-  subDays,
-} from "date-fns"
+import { format, isFuture, isSameDay, subDays } from "date-fns"
 import { ptBR } from "date-fns/locale/pt-BR"
 import { useHabits, type Habit } from "../context/HabitProvider"
 
-export function HabitList() {
+type HabitListProps = {
+  visibleDates: Date[]
+}
+
+export function HabitList({ visibleDates }: HabitListProps) {
   const { habits } = useHabits()
 
   if (habits.length === 0) {
@@ -25,7 +21,7 @@ export function HabitList() {
   return (
     <div className="flex flex-col gap-3 ">
       {habits.map((habit) => (
-        <HabitItem key={habit.id} habit={habit} />
+        <HabitItem key={habit.id} habit={habit} visibleDates={visibleDates} />
       ))}
     </div>
   )
@@ -33,16 +29,12 @@ export function HabitList() {
 
 type HabitItemProps = {
   habit: Habit
+  visibleDates: Date[]
 }
 
-function HabitItem({ habit }: HabitItemProps) {
+function HabitItem({ habit, visibleDates }: HabitItemProps) {
   //Usando o Custom Hook com de forma desestruturada
   const { deleteHabit, toggleHabit } = useHabits()
-
-  const visibleDates = eachDayOfInterval({
-    start: startOfWeek(new Date(), { weekStartsOn: 1 }),
-    end: endOfWeek(new Date(), { weekStartsOn: 1 }),
-  })
 
   const streak = getStreak(habit.completions)
   return (
