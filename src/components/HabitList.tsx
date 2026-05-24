@@ -33,7 +33,7 @@ type HabitItemProps = {
 }
 
 function HabitItem({ habit, visibleDates }: HabitItemProps) {
-  //Usando o Custom Hook com de forma desestruturada
+  //Usando o Custom Hook de forma desestruturada
   const { deleteHabit, toggleHabit } = useHabits()
 
   const streak = getStreak(habit.completions)
@@ -57,7 +57,7 @@ function HabitItem({ habit, visibleDates }: HabitItemProps) {
       <div className="flex gap-1.5">
         {visibleDates.map((date) => (
           <Button
-            className="flex flex-1 flex-col items-center gap-0.5 rounded-lg text-xs"
+            className="flex flex-1 flex-col items-center gap-0.5 rounded-lg text-xs max-w-1/8"
             key={date.toLocaleDateString()}
             disabled={isFuture(date)}
             onClick={() => toggleHabit(habit.id, date)}
@@ -78,6 +78,7 @@ function HabitItem({ habit, visibleDates }: HabitItemProps) {
 
 function formatDate(date: Date): string {
   const days = format(date, "EEEEEE", { locale: ptBR })
+  console.log(days.charAt(0).toUpperCase() + days.slice(1, 3) + ".")
   return days.charAt(0).toUpperCase() + days.slice(1, 3) + "."
 }
 
