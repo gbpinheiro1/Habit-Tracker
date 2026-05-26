@@ -30,7 +30,7 @@ export function HabitForm() {
       />
       <Button
         disabled={name.trim() === ""}
-        className="rounded-lg px-4 py-2 font-medium"
+        className="rounded-lg px-1.5 py-2 font-medium max-w-1/4 text-sm"
       >
         Adicionar
       </Button>

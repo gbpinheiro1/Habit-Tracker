@@ -4,3 +4,10 @@ body {
   background-color: var(--color-zinc-900);
   color: var(--color-zinc-100);
 }
+
+/* Responsividade para telas maiores, fazendo toda a página HTML escalar a partir do padrão que é font-size: 16px */
+@media (min-width: 1920px) {
+  html {
+    font-size: 28px;
+  }
+}
